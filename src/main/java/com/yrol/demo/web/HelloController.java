@@ -29,12 +29,11 @@ public class HelloController {
 
 	/**
 	 * For demo only - including an HTML form isn't a good practice Can also be
-	 * submitted as a GET request as well and receiving method should also have
-	 * accept GET
+	 * Submitted as a POST request as well and receiving method (user_greeting) should also accept POST
 	 */
-	@RequestMapping("/submit_name")
-	public String userForm() {
-		return " <form action=\"user_greeting\" method=\"POST\">\n" + "  <label for=\"fname\">First name:</label><br>\n"
+	@RequestMapping("/submit_name_post")
+	public String userFormPost() {
+		return " <form action=\"user_greeting_post\" method=\"POST\">\n" + "  <label for=\"fname\">First name:</label><br>\n"
 				+ "  <input type=\"text\" id=\"fname\" name=\"fname\"><br>\n"
 				+ "  <label for=\"lname\">Last name:</label><br>\n"
 				+ "  <input type=\"text\" id=\"lname\" name=\"lname\"><br><br>\n"
@@ -43,17 +42,39 @@ public class HelloController {
 
 	/**
 	 * Using the @RequestParam annotation to pass the values coming from the form
+	 * POST Example
 	 * above in userForm Func
 	 */
-	@RequestMapping(value = "/user_greeting", method = RequestMethod.POST)
-	public String printUserGreeting(@RequestParam String fname, @RequestParam String lname) {
+	@RequestMapping(value = "/user_greeting_post", method = RequestMethod.POST)
+	public String printUserGreetingPost(@RequestParam String fname, @RequestParam String lname) {
 		return "Hello there," + fname + " " + lname;
 	}
+	
+	
+	/**
+	 * For demo only - including an HTML form isn't a good practice Can also be
+	 * Submitted as a GET request as well and receiving method (user_greeting) should also accept GET
+	 */
+	@RequestMapping("submit_name_get")
+	public String userFormGet() {
+		return " <form action=\"user_greeting_get\" method=\"GET\">\n" + "  <label for=\"fname\">First name:</label><br>\n"
+				+ "  <input type=\"text\" id=\"fname\" name=\"fname\"><br>\n"
+				+ "  <label for=\"lname\">Last name:</label><br>\n"
+				+ "  <input type=\"text\" id=\"lname\" name=\"lname\"><br><br>\n"
+				+ "  <input type=\"submit\" value=\"Submit\">\n" + "</form> ";
+	}
+	
+	
+	@RequestMapping(value = "/user_greeting_get")
+	public String printUserGreetingGet(@RequestParam String fname, @RequestParam String lname) {
+		return "Hello there," + fname + " " + lname;
+	}
+	
 
 	/**
 	 * Dynamic URLs using @PathVariable annotation
 	 * 
-	 * @PathVariable will be used for defining path variables
+	 * @PathVariable will be used for defining path variables which is a part of URL
 	 */
 	@RequestMapping("/product/{id}")
 	public String getProduct(@PathVariable String id) {
@@ -62,7 +83,7 @@ public class HelloController {
 
 	/**
 	 * Dynamic URLs using @PathVariable annotation Similar to above example and
-	 * treating and handling path variable as optional
+	 * Treating and handling @PathVariable as optional
 	 */
 	@RequestMapping(value = { "/order", "/order/{id}" })
 	public String getOrder(@PathVariable(required = false) String orderId) {
