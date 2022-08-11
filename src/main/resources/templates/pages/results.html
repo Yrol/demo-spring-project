@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Result submitted</title>
+<h1>Form submitted</h1>
+</head>
+<body>
+	<p>
+		<span th:text="${user.fullName}"></span>
+	</p>
+	<p>
+		<span th:text="${user.age}"></span>
+	</p>
+	<p>
+		<span th:text="${user.gender}"></span>
+	</p>
+	<span th:if="${user.employed} == true">
+		<p>Employed</p>
+	</span>
+	<span th:unless="${user.employed} == true">
+		<p>Unemployed</p>
+	</span>
+</body>
+</html>
