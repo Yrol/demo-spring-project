@@ -6,9 +6,12 @@ This project has been developed using [SpringToolsSuite4](https://spring.io/tool
 ## Dependencies
 - Spring Web
 - Spring boot
-- Theymelead (templating)
+- Theymeleaf (templating)
 - Spring Dev Tools (LiveReload server)
 
+## Additional Eclipse Software (Help -> Install New Software)
+- Theymeleaf Content Assist
+- Theymeleaf Content Assist Source code
 
 ## URLs
 - http://localhost:8080 (can be used for submitting form data via `POST` request)
